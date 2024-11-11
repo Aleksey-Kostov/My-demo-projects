@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Marketplace</title>
+    <link rel="stylesheet" href="../static/style/style.css">
+    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
+    <title>Stats Widget</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <a class="navbar-brand" href="#">
+            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+        </a>
+        <div>
+            <h1>Welcome to Agro Marketplace</h1>
+            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4 text-danger">Delete Your Profile</h2>
+                
+                <form action="/delete-profile" method="POST" class="p-4 border rounded">
+                    <div class="alert alert-warning text-center">
+                        <strong>Warning!</strong> This action is permanent and cannot be undone.
+                    </div>
+                    
+                    <!-- Username or Email Field -->
+                    <div class="mb-3">
+                        <label for="identifier" class="form-label">Username or Email</label>
+                        <input type="text" id="identifier" name="identifier" class="form-control" placeholder="Enter your username or email" required>
+                    </div>
+                    
+                    <!-- Password Confirmation Field -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password to confirm" required>
+                    </div>
+                    
+                    <!-- Confirm Delete Checkbox -->
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="confirmDelete" required>
+                        <label class="form-check-label" for="confirmDelete">I understand this action cannot be undone.</label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger mt-3">Delete Profile</button>
+                    </div>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Contact Us</a></li>
+            </ul>
+            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../static/style/JavaScript/LoadScript.js"></script>
+</body>
+</html>

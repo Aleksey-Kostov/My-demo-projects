@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Marketplace</title>
+    <link rel="stylesheet" href="../static/style/style.css">
+    <link rel="icon" href="../static/images/agro logo.webp" type="image/x-icon">
+    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user-plus"></i> Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <header class="header">
+        <a class="navbar-brand" href="#">
+            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+        </a>
+        <div>
+            <h1>Welcome to Agro Marketplace</h1>
+            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Edit Profile Form -->
+        <section class="edit-profile">
+            <h2>Edit Profile</h2>
+            <form action="/submit-profile-edit" method="POST" enctype="multipart/form-data" class="row g-3">
+                
+                <!-- Upload Photo -->
+                <div class="col-12 text-center">
+                    <label for="profilePhoto" class="form-label d-block">Profile Photo</label>
+                    <div class="profile-photo-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/656f4e4dababbd7c042c4946/82bec838-05c8-4d68-b173-2284a6ad4e52/how-to-stop-being-a-people-pleaser" alt="Profile Photo" id="profilePreview">
+                        <div class="upload-overlay">
+                            <i class="fas fa-camera"></i>
+                            <input type="file" id="profilePhoto" name="profilePhoto" class="form-control" accept="image/*" onchange="loadProfilePhoto(event)" style="opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; cursor: pointer;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Full Name -->
+                <div class="col-md-6">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-control" placeholder="John Doe" required>
+                </div>
+                
+                <!-- Username in Agro Marketplace -->
+                <div class="col-md-6">
+                    <label for="username" class="form-label">Name in Agro Marketplace</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="john_agro" required>
+                </div>
+                
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="example@example.com" required>
+                </div>
+                
+                <!-- Phone Number with Country Code -->
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <div class="input-group">
+                        <select id="countryCode" name="countryCode" class="form-select">
+                            <option value="+1">+1 USA</option>
+                            <option value="+44">+44 UK</option>
+                            <option value="+91">+91 India</option>
+                            <option value="+359" selected>+359 Bulgaria</option>
+                            <option value="+33">+33 France</option>
+                            <option value="+49">+49 Germany</option>
+                            <option value="+81">+81 Japan</option>
+                            <option value="+61">+61 Australia</option>
+                            <option value="+86">+86 China</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="883 330 272" required>
+                    </div>
+                </div>
+                
+                <!-- Town -->
+                <div class="col-md-6">
+                    <label for="town" class="form-label">Town</label>
+                    <input type="text" id="town" name="town" class="form-control" placeholder="Sofia" required>
+                </div>
+                
+                <!-- New Password Section -->
+                <div class="col-12">
+                    <h3>Change Password</h3>
+                </div>
+                <div class="col-md-6">
+                    <label for="newPassword" class="form-label">New Password</label>
+                    <input type="password" id="newPassword" name="newPassword" class="form-control">
+                </div>
+                
+                <!-- Repeat New Password -->
+                <div class="col-md-6">
+                    <label for="confirmPassword" class="form-label">Repeat New Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+                </div>
+                
+                <!-- Save Changes Link -->
+                <div class="col-12 text-center">
+                    <a href="#" class="btn btn-primary mt-3">Save Changes</a>
+                </div>
+                <div class="col-12">
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                </div>
+               
+            </form>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Contact Us</a></li>
+            </ul>
+            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../static/style/JavaScript/LoadScript.js"></script>
+</body>
+</html>

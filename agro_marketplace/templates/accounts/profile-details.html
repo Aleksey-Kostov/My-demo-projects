@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Marketplace - Profile Info</title>
+    <link rel="stylesheet" href="../static/style/style.css">
+    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <a class="navbar-brand" href="#">
+            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+        </a>
+        <div>
+            <h1>Welcome to Agro Marketplace</h1>
+            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Profile Info Section -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 profil-conainer">
+                <h2 class="text-center mb-4">Profile Information</h2>
+                <div class="card p-4 info-profile">
+                    <a href="/previous-page" class="btn btn-secondary me-2 mb-2">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>                
+                    <!-- Profile Picture -->
+                    <div class="text-center profile-picture mb-4 picture-details">
+                        <img src="../static/images/profile_pictere.webp" alt="Profile Picture2" class="rounded-circle" width="75" height="75">
+                    </div>
+                    <!-- Profile Details -->
+                    <div class="mb-3 info-profile-text">
+                        <h5>Full Name:</h5>
+                        <p>John Doe</p>
+                    </div>
+                    <div class="mb-3 info-profile-text">
+                        <h5>Username:</h5>
+                        <p>johndoe123</p>
+                    </div>
+                    <div class="mb-3 info-profile-text">
+                        <h5>Email:</h5>
+                        <p>johndoe@example.com</p>
+                    </div>
+                    <div class="mb-3 info-profile-text">
+                        <h5>Phone:</h5>
+                        <p>+359 883 330 272</p>
+                    </div>
+                    <div class="mb-3 info-profile-text">
+                        <h5>Location:</h5>
+                        <p>Sofia, Bulgaria</p>
+                    </div>
+                    <!-- Sell Ads -->
+                    <div class="mb-3 info-profile-text">
+                        <h5>Sell Ads:</h5>
+                        <p>5 Active Ads</p> <!-- Replace with actual data -->
+                    </div>
+                    <!-- Buy Ads -->
+                    <div class="mb-3 info-profile-text">
+                        <h5>Buy Ads:</h5>
+                        <p>3 Active Ads</p> <!-- Replace with actual data -->
+                    </div>
+                    <!-- Number of Messages -->
+                    <div class="mb-3 info-profile-text">
+                        <h5>Messages:</h5>
+                        <p>12 New Messages</p> <!-- Replace with actual data -->
+                    </div>
+                    <div class="text-center mt-4">
+                        <!-- Active Listings Button -->
+                        <a href="/active-listings" class="btn btn-primary me-2">
+                            <i class="fas fa-list"></i> Active Listings
+                        </a>
+                    
+                        <!-- Inactive Listings Button -->
+                        <a href="/inactive-listings" class="btn btn-secondary me-2">
+                            <i class="fas fa-list-alt"></i> Inactive Listings
+                        </a>
+                    </div>
+                    
+                    <!-- Delete Account Button -->
+                    <div class="text-center mt-4">
+                        <a href="#" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+                            <i class="fas fa-trash-alt"></i> Delete Account
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Contact Us</a></li>
+            </ul>
+            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../static/style/JavaScript/LoadScript.js"></script>
+</body>
+</html>

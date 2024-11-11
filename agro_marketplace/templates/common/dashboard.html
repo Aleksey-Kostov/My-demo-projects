@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Marketplace</title>
+    <link rel="stylesheet" href="../static/style/style.css"> 
+    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-plus-circle"></i> Add
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign"></i> Sell</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-envelope"></i> Messages</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-plus-circle"></i> Create Profile</a> -->
+                            <a class="dropdown-item" href="#"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> Info Profile</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li> 
+
+                    <!-- if not have picture -->
+                    <li class="nav-item">
+                        <img src="../static/images/profile_pictere.webp" alt="Profile Picture" class="profile-picture">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Message Container -->
+    <div class="welcome-container text-end shadow-sm rounded p-3">
+        <div class="welcome-text">
+            Welcome, <span class="user-name">Aleksey Kostov</span>
+        </div>
+        <div id="currentDateTime" class="current-date-time"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <a class="navbar-brand" href="#">
+            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+        </a>
+        <div>
+            <h1>Welcome to Agro Marketplace</h1>
+            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
+        </div>
+    </header>
+    
+    <!-- Search Section -->
+    <section class="search-section container my-4">
+        <form action="/search" method="get" class="search-form">
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-3">
+                    <label for="searchInput" class="form-label">Search</label>
+                    <input type="text" id="searchInput" name="query" class="form-control" placeholder="Search...">
+                </div>
+    
+                <div class="col-md-4 mb-3">
+                    <label for="categorySelect" class="form-label">Category</label>
+                    <select id="categorySelect" name="category" class="form-select">
+                        <option value="">Select category</option>
+                        <option value="products">Vegetables</option>
+                        <option value="products">Fruits</option>
+                        <option value="products">Grain</option>
+                        <option value="products">Dairy products</option>
+                        <option value="products">Mushrooms</option>
+                        <option value="products">Herbs and spices</option>
+                        <option value="products">Grapes</option>
+                        <option value="products">Bee products</option>
+                        <option value="products">Other</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+                </div>
+    
+                <div class="col-md-2 d-grid mb-3">
+                    <label class="form-label">&nbsp;</label>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="row justify-content-center">
+            <!-- Sellers Section -->
+            <div class="col-md-5">
+                <h2 class="section-title text-center">Sellers</h2>
+                <div class="seller-list">
+                    <!-- Seller Card 1 -->
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fas fa-carrot"></i> Vegetables
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Aleksey Kostov</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">High-quality grains and seeds available for wholesale. sjjfgshfgshgh svdhs hedha hdhsg hvdsh</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/tomato.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 5, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> California</small>
+                        </div>
+                    </div>
+    
+                    <!-- Seller Card 2 -->
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fas fa-apple-alt"></i> Fruits
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Penko Kotev</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Fresh fruits and vegetables directly from farms.</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/orange.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 4, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Texas</small>
+                        </div>
+                    </div>
+
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fas fa-seedling"></i> Grains
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Penko Kotev</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Fresh fruits and vegetables directly from farms.kdjshdsjak dhsajkhfsadjkhsa jkjfajskfbgsakjfsjks ajfbgsahfgbahf gbahfcghjfcgsahj</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/orange.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 4, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Texas</small>
+                        </div>
+                    </div>
+
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fas fa-cheese"></i> Dairy Products
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Penko Kotev</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... j</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Fresh fruits and vegetables directly from farms. kdjshds jakdhs ajkhfsadjkhsajkjfajskfbg sakjfsjksajfbgsah fgbahf gbahfcghjfcgsahj</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/orange.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 4, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Texas</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Separator Line -->
+            <div class="col-md-1 text-center">
+                <div class="vertical-line"></div>
+            </div>
+    
+            <!-- Buyers Section -->
+            <div class="col-md-5">
+                <h2 class="section-title text-center">Buyers</h2>
+                <div class="buyer-list">
+                    <!-- Buyer Card 1 -->
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fa-solid fa-palette"></i> Mushrooms
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Orhan Murat</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Looking for bulk organic wheat orders.</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/carrot.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 3, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> New York</small>
+                        </div>
+                    </div>
+    
+                    <!-- Buyer Card 2 -->
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fas fa-leaf"></i> Herbs & Spices
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Gita Patel</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Seeking fresh carrots for retail.</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/defaut products.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 1, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Florida</small>
+                        </div>
+                    </div>
+
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fa-solid fa-wine-bottle"></i> Grapes
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Gita Patel</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Seeking fresh carrots for retail.</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/defaut products.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 1, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Florida</small>
+                        </div>
+                    </div>
+
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fa-brands fa-forumbee"></i> Bee Products
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Gita Patel</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Seeking fresh carrots for retail.</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/defaut products.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 1, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Florida</small>
+                        </div>
+                    </div>
+
+                    <div class="feed-card-wrapper mb-2 p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="category-note text-white px-2 py-1">
+                                <i class="fa-brands fa-ethereum"></i> Other
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-card d-flex align-items-center p-2">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-2 name">Gita Patel</h5>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0 ms-0 title">It is the best..... jsdhsjh jsdsjd ksfdsj  jnsdklh  ndksln jdnsjl jbdjs</h5>
+                                </div>
+                                <p class="m-0 text-truncate">Seeking fresh carrots for retail.</p>
+                                <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
+                            </div>
+                            <div class="product-image-container">
+                                <img src="../static/images/carrot.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="text-muted">
+                                <i class="fas fa-calendar-alt"></i> Nov 1, 2024
+                            </div>
+                            <small class="text-muted ms-auto"><i class="fas fa-map-marker-alt"></i> Florida</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-container">
+            <div class="pagination">
+                <a href="#" class="prev" onclick="goToPage('prev')">← Prev</a>
+                <span id="page-range"></span>
+                <a href="#" class="next" onclick="goToPage('next')">Next →</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Contact Us</a></li>
+            </ul>
+            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/static/style/JavaScript/LoadScript.js"></script>
+    <script src="/static/style/JavaScript/CurrentDateTime.js"></script>
+</body>
+</html>

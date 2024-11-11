@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Marketplace</title>
+    <link rel="stylesheet" href="../static/style/style.css">
+    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
+    <title>Stats Widget</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <a class="navbar-brand" href="#">
+            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+        </a>
+        <div>
+            <h1>Welcome to Agro Marketplace</h1>
+            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Buy in Agro Marketplace</h2>
+                    <form action="/submit-seller-info" method="POST" class="p-4 border rounded">
+                        <!-- Title Field -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Product Title</label>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="Enter Product Title"
+                                required>
+                        </div>
+        
+                        <!-- Category Field -->
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select id="category" name="category" class="form-select" required>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="grain">Grain</option>
+                                <option value="dairy-products">Dairy products</option>
+                                <option value="mushrooms">Mushrooms</option>
+                                <option value="herbs-spices">Herbs and spices</option>
+                                <option value="grapes">Grapes</option>
+                                <option value="bee-products">Bee products</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+        
+                        <!-- Location Field with Icon -->
+                        <div class="mb-3 d-flex align-items-center">
+                            <label for="location" class="form-label me-2">Location</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                <input type="text" id="location" name="location" class="form-control"
+                                    placeholder="Enter your location" required>
+                            </div>
+                        </div>
+        
+                        <!-- Description Field -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Product Description</label>
+                            <textarea id="description" name="description" class="form-control" rows="3"
+                                placeholder="Enter a brief description of the product" required></textarea>
+                        </div>
+        
+                        <!-- Default Photo Display (Icon for Deal) -->
+                        <div class="mb-3 text-center">
+                            <label for="product-image" class="form-label">Product Icon</label>
+                            <div id="deal-icon" class="icon-placeholder">
+                                <!-- Default placeholder image -->
+                                <img id="product-preview" src="../static/images/defaut products.jpg" alt="Default Product Icon"
+                                    style="max-width: 100px; border-radius: 10px;">
+                            </div>
+                            <input type="file" id="product-image" name="product_image" accept="image/*"
+                                class="form-control mt-2" onchange="previewImage(event)">
+                        </div>
+        
+                        <!-- Phone for Contacts -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your phone number"
+                                required>
+                        </div>
+        
+                        <!-- Name from Profile (Non-editable) -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="Penko Kotev" readonly>
+                        </div>
+        
+                        <!-- Quantity Field -->
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control"
+                                placeholder="Quantity (e.g., 100kg)" required>
+                        </div>
+        
+                        <!-- Price Dropdown -->
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <select id="price" name="price" class="form-select" onchange="togglePriceFields()" required>
+                                <option value="negotiation">Price by Negotiation</option>
+                                <option value="all_quantity">Price for All Quantity</option>
+                                <option value="per_quantity">Price per Quantity</option>
+                            </select>
+                        </div>
+        
+                        <!-- Price Per Unit (Visible when Price per Quantity is selected) -->
+                        <div id="price-per-unit" class="mb-3" style="display: none;">
+                            <label for="price-per-unit-field" class="form-label">Price Per Unit</label>
+                            <input type="number" id="price-per-unit-field" name="price_per_unit" class="form-control"
+                                placeholder="Enter price per unit" step="any">
+                        </div>
+        
+                        <!-- Price for All Quantity (Visible when Price for All Quantity is selected) -->
+                        <div id="price-all-quantity" class="mb-3" style="display: none;">
+                            <label for="price-all-quantity-field" class="form-label">Price for All Quantity</label>
+                            <input type="number" id="price-all-quantity-field" name="price_all_quantity" class="form-control"
+                                placeholder="Enter total price for all quantity" step="any">
+                        </div>
+        
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        </div>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Contact Us</a></li>
+            </ul>
+            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../static/style/JavaScript/LoadScript.js"></script>
+</body>
+</html>
