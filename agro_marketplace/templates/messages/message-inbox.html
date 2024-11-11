@@ -1,41 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Marketplace</title>
-    <link rel="stylesheet" href="../static/style/style.css">
-    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
-    <title>Stats Widget</title>
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
-                    </li> 
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends 'common/base.html' %}
+{% load static %}
 
-    <!-- Header -->
-    <header class="header">
-        <a class="navbar-brand" href="#">
-            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
-        </a>
-        <div>
-            <h1>Welcome to Agro Marketplace</h1>
-            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
-        </div>
-    </header>
-    
+{% block content %}
+
     <main class="container">
         <div class="mailbox-container">
             <div class="col-12 text-center">
@@ -65,7 +32,8 @@
                             <span><strong>Дата:</strong> Nov 8, 2024</span>
                         </div>
                         <div class="message-excerpt">
-                            Здравейте, интересувам се от закупуването на пресни зеленчуци. Може ли да ми предоставите подробности за...
+                            Здравейте, интересувам се от закупуването на пресни зеленчуци. Може ли да ми предоставите
+                            подробности за...
                         </div>
                     </div>
                     <button class="delete-btn" onclick="deleteMessage(this)">Delete</button>
@@ -88,15 +56,4 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Contact Us</a></li>
-            </ul>
-            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="../static/style/JavaScript/LoadScript.js"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,52 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Marketplace</title>
-    <link rel="stylesheet" href="../static/style/style.css">
-    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
-    <title>Stats Widget</title>
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
-                    </li> 
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends 'common/base.html' %}
+{% load static %}
 
-    <!-- Header -->
-    <header class="header">
-        <a class="navbar-brand" href="#">
-            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
-        </a>
-        <div>
-            <h1>Welcome to Agro Marketplace</h1>
-            <p class="lead">Your Marketplace for Freshness – Connecting Buyers and Sellers Across Agriculture</p>
-        </div>
-    </header>
+{% block content %}
 
-    <!-- Main Content -->
     <main class="container my-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <h2 class="text-center mb-4">Sell in Agro Marketplace</h2>
-                    <form action="/submit-seller" method="POST" class="p-4 border rounded" enctype="multipart/form-data">
+                    <form action="/submit-seller" method="POST" class="p-4 border rounded"
+                          enctype="multipart/form-data">
                         <!-- Title Field -->
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Product Title" required>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="Product Title"
+                                   required>
                         </div>
 
                         <!-- Category Dropdown -->
@@ -76,20 +44,23 @@
                             <label for="location" class="form-label me-2">Location</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                                <input type="text" id="location" name="location" class="form-control" placeholder="Enter your location" required>
+                                <input type="text" id="location" name="location" class="form-control"
+                                       placeholder="Enter your location" required>
                             </div>
                         </div>
 
                         <!-- Description -->
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe your product" required></textarea>
+                            <textarea id="description" name="description" class="form-control" rows="4"
+                                      placeholder="Describe your product" required></textarea>
                         </div>
 
                         <!-- Upload Photos (Multiple) -->
                         <div class="mb-3">
                             <label for="photos" class="form-label">Upload Photos (Max 10)</label>
-                            <input type="file" id="photos" name="photos[]" class="form-control" multiple accept="image/*" required onchange="previewPhotos()">
+                            <input type="file" id="photos" name="photos[]" class="form-control" multiple
+                                   accept="image/*" required onchange="previewPhotos()">
                             <small id="fileHelp" class="form-text text-muted">You can upload up to 10 photos.</small>
                         </div>
 
@@ -101,7 +72,8 @@
                         <!-- Phone for Contacts -->
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your phone number" required>
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                                   placeholder="Your phone number" required>
                         </div>
 
                         <!-- Name from Profile (Non-editable) -->
@@ -113,7 +85,8 @@
                         <!-- Quantity Field -->
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Quantity (e.g., 100kg)" required>
+                            <input type="number" id="quantity" name="quantity" class="form-control"
+                                   placeholder="Quantity (e.g., 100kg)" required>
                         </div>
 
                         <!-- Price Dropdown -->
@@ -129,13 +102,15 @@
                         <!-- Price Per Unit (Visible when Price per Quantity is selected) -->
                         <div id="price-per-unit" class="mb-3" style="display: none;">
                             <label for="price-per-unit-field" class="form-label">Price Per Unit</label>
-                            <input type="number" id="price-per-unit-field" name="price_per_unit" class="form-control" placeholder="Enter price per unit" step="any">
+                            <input type="number" id="price-per-unit-field" name="price_per_unit" class="form-control"
+                                   placeholder="Enter price per unit" step="any">
                         </div>
 
                         <!-- Price for All Quantity (Visible when Price for All Quantity is selected) -->
                         <div id="price-all-quantity" class="mb-3" style="display: none;">
                             <label for="price-all-quantity-field" class="form-label">Price for All Quantity</label>
-                            <input type="number" id="price-all-quantity-field" name="price_all_quantity" class="form-control" placeholder="Enter total price for all quantity" step="any">
+                            <input type="number" id="price-all-quantity-field" name="price_all_quantity"
+                                   class="form-control" placeholder="Enter total price for all quantity" step="any">
                         </div>
 
                         <!-- Submit Button -->
@@ -150,15 +125,4 @@
             </div>
         </div>
     </main>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Contact Us</a></li>
-            </ul>
-            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="../static/style/JavaScript/LoadScript.js"></script>
-</body>
-</html>
+{% endblock %}

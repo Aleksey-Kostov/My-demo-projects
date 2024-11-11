@@ -1,55 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Marketplace</title>
-    <link rel="stylesheet" href="../static/style/style.css"> 
-    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-plus-circle"></i> Add
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign"></i> Sell</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-envelope"></i> Messages</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i> Profile
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-plus-circle"></i> Create Profile</a> -->
-                            <a class="dropdown-item" href="#"><i class="fas fa-user-edit"></i> Edit Profile</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> Info Profile</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </li> 
+{% extends 'common/base.html' %}
+{% load static %}
 
-                    <!-- if not have picture -->
-                    <li class="nav-item">
-                        <img src="../static/images/profile_pictere.webp" alt="Profile Picture" class="profile-picture">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% block content %}
+   
 
     <!-- Welcome Message Container -->
     <div class="welcome-container text-end shadow-sm rounded p-3">
@@ -62,7 +15,7 @@
     <!-- Header -->
     <header class="header">
         <a class="navbar-brand" href="#">
-            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+            <img src="{% static 'images/agro logo.webp' %}" alt="Agro Marketplace Icon" class="logo">
         </a>
         <div>
             <h1>Welcome to Agro Marketplace</h1>
@@ -137,7 +90,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/tomato.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/tomato.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -175,7 +128,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/orange.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/orange.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -212,7 +165,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/orange.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/orange.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -249,7 +202,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/orange.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/orange.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -298,7 +251,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/carrot.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/carrot.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -336,7 +289,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/defaut products.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/defaut products.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -373,7 +326,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/defaut products.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/defaut products.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -410,7 +363,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/defaut products.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/defaut products.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -447,7 +400,7 @@
                                 <p class="m-0 quantity">Quantity: <strong>100 kg</strong></p>
                             </div>
                             <div class="product-image-container">
-                                <img src="../static/images/carrot.jpg" alt="Product Image" class="product-picture"> <!-- Product Image -->
+                                <img src="{% static 'images/carrot.jpg' %}" alt="Product Image" class="product-picture"> <!-- Product Image -->
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-2">
@@ -469,16 +422,4 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Contact Us</a></li>
-            </ul>
-            <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="/static/style/JavaScript/LoadScript.js"></script>
-    <script src="/static/style/JavaScript/CurrentDateTime.js"></script>
-</body>
-</html>
+{% endblock content %}

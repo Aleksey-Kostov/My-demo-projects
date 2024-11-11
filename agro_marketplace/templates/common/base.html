@@ -1,11 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Marketplace</title>
-    <link rel="stylesheet" href="../static/style/style.css">
-    <link rel="icon" href="../static/images/agro logo.webp" type="image/png">
+    <link rel="stylesheet" href=" {% static 'style/style.css' %}">
+    <link rel="icon" href="{% static 'images/agro logo.webp' %}" type="image/png">
     <title>Stats Widget</title>
 </head>
 <body>
@@ -28,7 +30,7 @@
     <!-- Header -->
     <header class="header">
         <a class="navbar-brand" href="#">
-            <img src="../static/images/agro logo.webp" alt="Agro Marketplace Icon" class="logo">
+            <img src="{% static 'images/agro logo.webp' %}" alt="Agro Marketplace Icon" class="logo">
         </a>
         <div>
             <h1>Welcome to Agro Marketplace</h1>
@@ -36,9 +38,8 @@
         </div>
     </header>
     
-    <main class="container mb-2">
-       
-    </main>
+    {% block content %}
+    {% endblock content %}
 
     <!-- Footer -->
     <footer>
@@ -49,6 +50,7 @@
             <p>&copy; 2024 Agro Marketplace. All rights reserved.</p>
         </div>
     </footer>
-    <script src="../static/style/JavaScript/LoadScript.js"></script>
+    <script src="{% static 'style/JavaScript/LoadScript.js' %}"></script>
+    <script src="{% static 'style/JavaScript/CurrentDateTime.js' %}"></script>
 </body>
 </html>
