@@ -2,94 +2,158 @@
 {% load static %}
 
 {% block content %}
-
     <main class="container my-4">
-        <!-- Edit Profile Form -->
         <section class="edit-profile">
             <h2>Edit Profile</h2>
-            <form action="/submit-profile-edit" method="POST" enctype="multipart/form-data" class="row g-3">
-                
-                <!-- Upload Photo -->
-                <div class="col-12 text-center">
-                    <label for="profilePhoto" class="form-label d-block">Profile Photo</label>
+
+            <!-- Display Success or Error Messages -->
+            {% if messages %}
+                <div class="alert-container">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'profile-edit' request.user.pk %}" method="POST" enctype="multipart/form-data"
+                  class="row g-3">
+                {% csrf_token %}
+
+                <!-- Profile Photo -->
+                <div class="col-md-12 mb-3 text-center">
                     <div class="profile-photo-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/656f4e4dababbd7c042c4946/82bec838-05c8-4d68-b173-2284a6ad4e52/how-to-stop-being-a-people-pleaser" alt="Profile Photo" id="profilePreview">
+                        <img src="
+                                
+                                {% if form.profile_photo.value %}{{ form.profile_photo.value.url }}{% else %}{% static 'images/profile_picture.webp' %}{% endif %}"
+                             alt="Profile Photo" id="profile-img-preview" class="profile-preview-img">
                         <div class="upload-overlay">
                             <i class="fas fa-camera"></i>
-                            <input type="file" id="profilePhoto" name="profilePhoto" class="form-control" accept="image/*" onchange="loadProfilePhoto(event)" style="opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; cursor: pointer;">
+                            <input type="file" id="id_profile_photo" name="profile_photo" class="profile-photo-input">
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Full Name -->
-                <div class="col-md-6">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" class="form-control" placeholder="John Doe" required>
+                <div class="col-md-6 mb-3">
+                    {{ form.full_name.label_tag }}
+                    {{ form.full_name }}
+                    {% if form.full_name.errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.full_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-                
+
                 <!-- Username in Agro Marketplace -->
-                <div class="col-md-6">
-                    <label for="username" class="form-label">Name in Agro Marketplace</label>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="john_agro" required>
+                <div class="col-md-6 mb-3">
+                    {{ form.username_in_marketplace.label_tag }}
+                    {{ form.username_in_marketplace }}
+                    {% if form.username_in_marketplace.errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.username_in_marketplace.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-                
+
                 <!-- Email -->
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="example@example.com" required>
+                <div class="col-md-6 mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.email.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-                
-                <!-- Phone Number with Country Code -->
-                <div class="col-md-6">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <div class="input-group">
-                        <select id="countryCode" name="countryCode" class="form-select">
-                            <option value="+1">+1 USA</option>
-                            <option value="+44">+44 UK</option>
-                            <option value="+91">+91 India</option>
-                            <option value="+359" selected>+359 Bulgaria</option>
-                            <option value="+33">+33 France</option>
-                            <option value="+49">+49 Germany</option>
-                            <option value="+81">+81 Japan</option>
-                            <option value="+61">+61 Australia</option>
-                            <option value="+86">+86 China</option>
-                            <!-- Add more countries as needed -->
-                        </select>
-                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="883 330 272" required>
+
+                <!-- Country Code and Phone -->
+                <div class="col-md-6 mb-3">
+                    <div class="d-flex">
+                        <div class="col-md-4">
+                            {{ form.country_code.label_tag }}
+                            {{ form.country_code }}
+                            {% if form.country_code.errors %}
+                                <div class="alert alert-danger">
+                                    {% for error in form.country_code.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            {{ form.phone.label_tag }}
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                                <div class="alert alert-danger">
+                                    {% for error in form.phone.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- Town -->
-                <div class="col-md-6">
-                    <label for="town" class="form-label">Town</label>
-                    <input type="text" id="town" name="town" class="form-control" placeholder="Sofia" required>
+                <div class="col-md-6 mb-3">
+                    {{ form.town.label_tag }}
+                    {{ form.town }}
+                    {% if form.town.errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.town.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-                
-                <!-- New Password Section -->
                 <div class="col-12">
                     <h3>Change Password</h3>
                 </div>
-                <div class="col-md-6">
-                    <label for="newPassword" class="form-label">New Password</label>
-                    <input type="password" id="newPassword" name="newPassword" class="form-control">
+                <!-- New Password -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        {{ form.newPassword.label_tag }}
+                        {{ form.newPassword }}
+                        {% if form.newPassword.errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.newPassword.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-6">
+                        {{ form.confirmPassword.label_tag }}
+                        {{ form.confirmPassword }}
+                        {% if form.confirmPassword.errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.confirmPassword.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-                
-                <!-- Repeat New Password -->
-                <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label">Repeat New Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
-                </div>
-                
-                <!-- Save Changes Link -->
+                <!-- Save Changes Button -->
                 <div class="col-12 text-center">
-                    <a href="#" class="btn btn-primary mt-3">Save Changes</a>
+                    <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
                 </div>
+
+                <!-- Back Button -->
                 <div class="col-12">
-                    <a href="#" class="btn btn-secondary">
+                    <a href="{% url 'dash' %}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back
                     </a>
                 </div>
-               
             </form>
         </section>
     </main>

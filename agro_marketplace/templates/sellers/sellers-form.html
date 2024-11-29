@@ -8,116 +8,175 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <h2 class="text-center mb-4">Sell in Agro Marketplace</h2>
-                    <form action="/submit-seller" method="POST" class="p-4 border rounded"
+                   <form action="{% url 'create_seller' %}" method="POST" class="p-4 border rounded"
                           enctype="multipart/form-data">
+                        {% csrf_token %}
                         <!-- Title Field -->
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Product Title"
-                                   required>
+                            <div class="text-danger">
+                                {{ seller_form.title.errors }}
+                            </div>
+                            {{ seller_form.title.label_tag }}
+                            {{ seller_form.title }}
                         </div>
-
-                        <!-- Category Dropdown -->
+                        <!-- Category Field -->
                         <div class="mb-3">
-                            <label for="category" class="form-label">Category</label>
-                            <select id="category" name="category" class="form-select" required>
-                                <option value="vegetables">Vegetables</option>
-                                <option value="fruits">Fruits</option>
-                                <option value="grain">Grain</option>
-                                <option value="dairy_products">Dairy Products</option>
-                                <option value="mushrooms">Mushrooms</option>
-                                <option value="herbs_spices">Herbs and Spices</option>
-                                <option value="grapes">Grapes</option>
-                                <option value="bee_products">Bee Products</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <div class="text-danger">
+                                {{ seller_form.category.errors }}
+                            </div>
+                            {{ seller_form.label_tag }}
+                            {{ seller_form.category }}
                         </div>
-
-                        <!-- Validity Period -->
-                        <div class="mb-3">
-                            <label for="validity" class="form-label">Validity Period</label>
-                            <input type="date" id="validity" name="validity" class="form-control" required>
+                        <!-- Location Field with Icon -->
+                        <div class="text-danger">
+                            {{ seller_form.location.errors }}
                         </div>
-
-                        <!-- Settlement for Production -->
+                        {{ seller_form.location.label_tag }}
                         <div class="mb-3 d-flex align-items-center">
-                            <label for="location" class="form-label me-2">Location</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                                <input type="text" id="location" name="location" class="form-control"
-                                       placeholder="Enter your location" required>
+                                {{ seller_form.location }}
+                            </div>
+                        </div>
+                        <!-- Description Field -->
+                        <div class="mb-3">
+                            <div class="text-danger">
+                                {{ seller_form.description.errors }}
+                            </div>
+                            {{ seller_form.description.label_tag }}
+                            {{ seller_form.description }}
+                        </div>
+                        <div class="photo-framework">
+                            <label for="id_photo_1"><div class="text-danger">{{ seller_form.photo_1.errors }}</div>
+                                {{ seller_form.photo_1.label_tag }}</label>
+                            <div class="photo-container">
+                                <img
+                                        id="photoPreview1"
+                                        src="{% static 'images/default products2.jpg' %}"
+                                        alt="Photo 1"
+                                        class="photo-preview"
+                                />
+                                {{ seller_form.photo_1 }}
+                                <button
+                                        type="button"
+                                        class="btn btn-primary upload-button"
+                                        onclick="document.getElementById('id_photo_1').click();"
+                                >
+                                    Upload Photo 1
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Description -->
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
-                            <textarea id="description" name="description" class="form-control" rows="4"
-                                      placeholder="Describe your product" required></textarea>
+                        <div class="photo-framework">
+                            <label for="id_photo_2"><div class="text-danger">{{ seller_form.photo_2.errors }}</div>
+                                {{ seller_form.photo_2.label_tag }}</label>
+                            <div class="photo-container">
+                                <img
+                                        id="photoPreview2"
+                                        src="{% static 'images/default products2.jpg' %}"
+                                        alt="Photo 2"
+                                        class="photo-preview"
+                                />
+                                {{ seller_form.photo_2 }}
+                                <button
+                                        type="button"
+                                        class="btn btn-primary upload-button"
+                                        onclick="document.getElementById('id_photo_2').click();"
+                                >
+                                    Upload Photo 2
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Upload Photos (Multiple) -->
-                        <div class="mb-3">
-                            <label for="photos" class="form-label">Upload Photos (Max 10)</label>
-                            <input type="file" id="photos" name="photos[]" class="form-control" multiple
-                                   accept="image/*" required onchange="previewPhotos()">
-                            <small id="fileHelp" class="form-text text-muted">You can upload up to 10 photos.</small>
+                        <div class="photo-framework">
+                            <label for="id_photo_3"><div class="text-danger">{{ seller_form.photo_3.errors }}</div>
+                                {{ seller_form.photo_3.label_tag }}</label>
+                            <div class="photo-container">
+                                <img
+                                        id="photoPreview3"
+                                        src="{% static 'images/default products2.jpg' %}"
+                                        alt="Photo 3"
+                                        class="photo-preview"
+                                />
+                                {{ seller_form.photo_3 }}
+                                <button
+                                        type="button"
+                                        class="btn btn-primary upload-button"
+                                        onclick="document.getElementById('id_photo_3').click();"
+                                >
+                                    Upload Photo 3
+                                </button>
+                            </div>
                         </div>
-
-                        <!-- Photo Preview Section (Will show after upload) -->
-                        <div id="photo-preview" class="mb-3" style="display: none;">
-                            <!-- Previewed images will appear here -->
+                        <div class="photo-framework">
+                            <label for="id_photo_4"><div class="text-danger">{{ seller_form.photo_4.errors }}</div>
+                                {{ seller_form.photo_4.label_tag }}</label>
+                            <div class="photo-container">
+                                <img id="photoPreview4" src="{% static 'images/default products2.jpg' %}" alt="Photo 4"
+                                     class="photo-preview"/>
+                                {{ seller_form.photo_4 }}
+                                <button type="button" class="btn btn-primary upload-button"
+                                        onclick="document.getElementById('id_photo_4').click();">
+                                    Upload Photo 4
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Phone for Contacts -->
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" id="phone" name="phone" class="form-control"
-                                   placeholder="Your phone number" required>
-                        </div>
-
-                        <!-- Name from Profile (Non-editable) -->
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" value="Penko Kotev" readonly>
+                            <div class="text-danger">
+                                {{ seller_form.phone.errors }}
+                            </div>
+                            {{ seller_form.phone.label_tag }}
+                            {{ seller_form.phone }}
                         </div>
 
                         <!-- Quantity Field -->
+                        <div class="mb-3" class="form-group">
+                            <div class="text-danger">
+                                {{ seller_form.quantity.errors }}
+                            </div>
+                            {{ seller_form.quantity.label_tag }}
+                            <div class="d-flex">
+                                {{ seller_form.quantity }}
+                                {{ seller_form.unit_of_measure }}
+                            </div>
+                        </div>
+
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" class="form-control"
-                                   placeholder="Quantity (e.g., 100kg)" required>
+                            <div class="text-danger">
+                                {{ seller_form.price_type.errors }}
+                            </div>
+                            {{ seller_form.price_type.label_tag }}
+                            {{ seller_form.price_type }}
                         </div>
 
-                        <!-- Price Dropdown -->
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Price</label>
-                            <select id="price" name="price" class="form-select" onchange="togglePriceFields()" required>
-                                <option value="negotiation">Price by Negotiation</option>
-                                <option value="all_quantity">Price for All Quantity</option>
-                                <option value="per_quantity">Price per Quantity</option>
-                            </select>
+                        <div id="pricePerUnitContainer" class="form-group" style="display: none;">
+                            <div class="text-danger">
+                                {{ seller_form.price_per_unit.errors }}
+                            </div>
+                            {{ seller_form.price_per_unit.label_tag }}
+                            <div class="d-flex">
+                                {{ seller_form.price_per_unit }}
+                                {{ seller_form.currency }}
+                            </div>
                         </div>
 
-                        <!-- Price Per Unit (Visible when Price per Quantity is selected) -->
-                        <div id="price-per-unit" class="mb-3" style="display: none;">
-                            <label for="price-per-unit-field" class="form-label">Price Per Unit</label>
-                            <input type="number" id="price-per-unit-field" name="price_per_unit" class="form-control"
-                                   placeholder="Enter price per unit" step="any">
+                        <div id="priceAllQuantityContainer" class="form-group" style="display: none;">
+                            <div class="text-danger">
+                                {{ seller_form.price_all_quantity.errors }}
+                            </div>
+                            {{ product_form.price_all_quantity.label_tag }}
+                            <div class="d-flex">
+                                {{ seller_form.price_all_quantity }}
+                                {{ seller_form.currency }}
+                            </div>
                         </div>
-
-                        <!-- Price for All Quantity (Visible when Price for All Quantity is selected) -->
-                        <div id="price-all-quantity" class="mb-3" style="display: none;">
-                            <label for="price-all-quantity-field" class="form-label">Price for All Quantity</label>
-                            <input type="number" id="price-all-quantity-field" name="price_all_quantity"
-                                   class="form-control" placeholder="Enter total price for all quantity" step="any">
-                        </div>
-
                         <!-- Submit Button -->
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
                         </div>
-                        <a href="#" class="btn btn-secondary">
+                        <a href="#" class="btn btn-secondary" onclick="goBack()">
                             <i class="fas fa-arrow-left"></i> Back
                         </a>
                     </form>

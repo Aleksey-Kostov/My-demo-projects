@@ -2,34 +2,69 @@
 {% load static %}
 
 {% block content %}
-    <!-- Main Content -->
     <main class="container my-4">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h2 class="text-center mb-4">Send Message</h2>
-                <form action="/submit-message" method="POST" class="p-4 border rounded">
-
-                    <!-- Fixed Title Displayed Here -->
-                    <div class="mb-3">
-                        <label class="form-label">Title</label>
-                        <p id="ad-title" class="form-control-plaintext"><strong>Your Ad Title Here</strong></p>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Message Details</h5>
                     </div>
-
-                    <!-- Message Field -->
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-control" rows="5"
-                                  placeholder="Type your message here..." required></textarea>
+                    <div class="card-body">
+                        <!-- Display Recipient Details -->
+                        <div class="mb-3 d-flex align-items-center">
+                            <span class="me-2"><i class="fas fa-user-circle text-warning"></i></span>
+                            <strong>Sender:</strong>
+                            <span class="ms-2">{{ user.username }}</span>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <span class="me-2"><i class="fas fa-user text-primary"></i></span>
+                            <strong>Recipient:</strong>
+                            <span class="ms-2">{{ recipient.username }}</span>
+                        </div>
+                        <!-- Display Product Title -->
+                        <div class="mb-3 d-flex align-items-center">
+                            <span class="me-2"><i class="fas fa-box text-success"></i></span>
+                            <strong>Product:</strong>
+                            <span class="ms-2">{{ product.title }}</span>
+                        </div>
+                        <!-- Display Sender Information -->
                     </div>
+                </div>
 
-                    <!-- Submit Button -->
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary mt-3">Send Message</button>
+                <!-- Message Form -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Compose Your Message</h5>
                     </div>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </a>
-                </form>
+                    <div class="card-body">
+                        <form action="" method="POST" class="p-3">
+                            {% csrf_token %}
+
+                            <!-- Title Field -->
+                            <div class="mb-3">
+                                <label for="id_title" class="form-label">Title</label>
+                                {{ form.title }} <!-- Render the title field -->
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="mb-3">
+                                <label for="id_message" class="form-label">Message</label>
+                                {{ form.body }}
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary mt-3 w-50">Send Message</button>
+                            </div>
+                            <div class="text-center mt-3">
+                                <button onclick="goBack()" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

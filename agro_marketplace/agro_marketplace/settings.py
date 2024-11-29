@@ -38,12 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "agro_marketplace.accounts.apps.AccountsConfig",
-    "agro_marketplace.buyers.apps.BuyersConfig",
-    "agro_marketplace.common.apps.CommonConfig",
-    "agro_marketplace.sellers.apps.SellersConfig",
-    "agro_marketplace.messages.apps.MessagesConfig"
-
+    "agro_marketplace.accounts",
+    "agro_marketplace.buyers",
+    "agro_marketplace.common",
+    "agro_marketplace.sellers",
+    "agro_marketplace.agro_messages"
 ]
 
 MIDDLEWARE = [
@@ -123,20 +122,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles/'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# AUTH_USER_MODEL = 'accounts.AppUser'
-# LOGIN_REDIRECT_URL = reverse_lazy('home')
-# LOGOUT_REDIRECT_URL = reverse_lazy('login')
+AUTH_USER_MODEL = 'accounts.AppUser'
+LOGIN_REDIRECT_URL = 'dash'
+LOGOUT_REDIRECT_URL = 'home'

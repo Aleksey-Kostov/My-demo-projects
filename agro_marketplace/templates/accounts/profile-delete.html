@@ -8,7 +8,8 @@
             <div class="col-md-6">
                 <h2 class="text-center mb-4 text-danger">Delete Your Profile</h2>
 
-                <form action="/delete-profile" method="POST" class="p-4 border rounded">
+                <form method="POST" class="p-4 border rounded">
+                    {% csrf_token %}
                     <div class="alert alert-warning text-center">
                         <strong>Warning!</strong> This action is permanent and cannot be undone.
                     </div>
@@ -38,9 +39,9 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger mt-3">Delete Profile</button>
                     </div>
-                    <a href="#" class="btn btn-secondary">
+                    <button onclick="goBack()" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back
-                    </a>
+                    </button>
                 </form>
             </div>
         </div>

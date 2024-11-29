@@ -1,31 +1,35 @@
 {% extends 'common/base.html' %}
-{% load static %}
-
 {% block content %}
-    <!-- Main Content -->
     <main class="container my-4">
         <div class="mailbox-container">
             <div class="col-12 text-center">
-                <a href="#" class="btn btn-secondary">
+                <!-- Back Button -->
+                <a href="{% url 'message-inbox' %}" class="btn btn-secondary">
                     <i class="fas fa-arrow-left"></i> Back
                 </a>
             </div>
+
             <!-- Message Box -->
             <div class="message-box">
-                <h3>Product Inquiry</h3>
+                <h3>{{ message.title }}</h3>
 
+                <!-- Sender Information -->
                 <div class="sender-info">
-                    <span><strong>From:</strong> John Doe</span>
-                    <span><strong>Date:</strong> Nov 8, 2024</span>
+                    <span><strong>From:</strong> {{ message.sender.username }}</span>
+                    <span><strong>To:</strong> {{ message.recipient.username }}</span>
+                    <span><strong>Date:</strong> {{ message.timestamp|date:"d F, Y H:i" }}</span>
                 </div>
-                <p>
-                    Hi, I am interested in purchasing your products listed under the Vegetables category.
-                    Could you please let me know the quantity available and your pricing? Looking forward
-                    to your reply. Thank you!
-                </p>
-                <button class="btn">Reply</button>
+
+                <!-- Message Content -->
+                <div class="message-content">
+                    <p>{{ message.body|linebreaksbr }}</p>
+                </div>
+
+                <!-- Reply Button -->
+                <a href="{% url 'reply-message' message.pk %}" class="btn btn-success">
+                    <i class="fas fa-reply"></i> Reply
+                </a>
             </div>
         </div>
     </main>
-    <!-- Footer -->
 {% endblock %}

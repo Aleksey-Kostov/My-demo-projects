@@ -96,7 +96,7 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 54%;
+    width: 65%;
     margin: 0 auto;
 }
 
@@ -262,4 +262,166 @@
 
 .back-btn:hover {
     color: #218838;  /* Change color on hover */
+}
+
+/* Inbox Container */
+.mailbox-container {
+    max-width: 960px; /* Matches the Inbox Header width */
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.mailbox-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Message List */
+.message-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Message Card */
+.message-card {
+    position: relative; /* For hover effects */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px;
+    border: 1px solid #e0e4e8;
+    border-radius: 8px;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow effect */
+    cursor: pointer;
+}
+
+/* Unread Message Highlight */
+.message-card.unread {
+    border-left: 5px solid #007bff; /* Blue indicator for unread messages */
+}
+
+/* Message Content */
+.message-content {
+    flex-grow: 1;
+    max-width: 70%;
+}
+
+.message-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.message-meta {
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column; /* Arrange "From" and "Date" vertically */
+}
+
+.message-meta > div {
+    margin-bottom: 4px;
+}
+
+.message-excerpt {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Action Buttons */
+.custom-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.reply {
+    background-color: #573c59;
+    color: #fff;
+    margin-right: 8px;
+}
+
+.reply:hover {
+    background-color: #0056b3;
+}
+
+.delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete:hover {
+    background-color: #a71d2a;
+}
+
+/* Empty Inbox */
+.alert-warning {
+    text-align: center;
+    color: #999;
+    font-size: 1.2rem;
+    padding: 30px 0;
+}
+
+.alert-warning i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.sender-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sender-details {
+    display: flex;
+    gap: 20px;
+}
+
+.sender-info div {
+    margin-bottom: 8px;
+}
+
+.sender-info strong {
+    font-weight: bold;
+}
+
+
+
+.sender-info {
+    border: 1px solid #ddd; /* Optional border */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e1d5d5; /* Optional background */
+}
+
+.sender-info .info-group {
+    flex: 1; /* Allows equal space distribution between groups */
+    padding: 5px;
+}
+
+.sender-info strong {
+    color: #333; /* Emphasizes labels */
 }

@@ -1,10 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 
-# urlpatterns = [
-#     path('add/', views.AlbumCreateView.as_view(), name='add-album'),
-#     path('<int:id>/', include([
-#         path('edit/', views.AlbumEditView.as_view(), name='album-edit'),
-#         path('details/', views.AlbumDetailsView.as_view(), name='album-details'),
-#         path('delete/', views.AlbumDeleteView.as_view(), name='album-delete'),
-#     ]))
-# ]
+from agro_marketplace.buyers import views
+
+urlpatterns = [
+    path('create/', views.create_buyer, name='create-buyer'),
+    path('<int:pk>/', views.card_info_buyer, name='card-info-buy'),
+]

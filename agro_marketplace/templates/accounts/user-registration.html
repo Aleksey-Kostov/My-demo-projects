@@ -8,41 +8,47 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h3 class="text-center mb-4">Register to Agro Marketplace</h3>
-                <form action="/submit-registration" method="POST">
+                <form method="POST" action="{% url 'register' %}">
+                    {% csrf_token %}
                     <!-- Username Field -->
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" id="username" name="username" class="form-control"
-                               placeholder="Choose a username" required>
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                        {{ form.username.errors }}
                     </div>
+
                     <!-- Email Field -->
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control"
-                               placeholder="example@example.com" required>
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        {{ form.email.errors }}
                     </div>
+
                     <!-- Password Field -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control"
-                               placeholder="Enter your password" required>
+                        {{ form.password1.errors }}
+                        {{ form.password1.label_tag }}
+                        {{ form.password1 }}
                     </div>
+
                     <!-- Repeat Password Field -->
                     <div class="mb-3">
-                        <label for="repeatPassword" class="form-label">Repeat Password</label>
-                        <input type="password" id="repeatPassword" name="repeatPassword" class="form-control"
-                               placeholder="Repeat your password" required>
+                        {{ form.password2.errors }}
+                        {{ form.password2.label_tag }}
+                        {{ form.password2 }}
                     </div>
+
                     <!-- Submit Button -->
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
+
                     <div class="text-center mt-3">
-                        <p>Already have an account? <a href="#">Login here</a></p>
+                        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
                     </div>
                 </form>
-                <!-- Optional link for users who already have an account -->
 
+                <!-- Optional link for users who already have an account -->
             </div>
         </div>
     </main>

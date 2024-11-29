@@ -97,7 +97,6 @@ body {
     color: #2e8b57;
     text-align: center;
     margin: 30px 0 20px;
-    font: 90px/1.5 "Cormorant Infant";
 }
 
 .feed-card-wrapper {
@@ -105,7 +104,6 @@ body {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 10px;
-    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
@@ -377,8 +375,6 @@ footer ul.list-inline a {
     white-space: normal;
     word-wrap: break-word;
     color: dimgray;
-    font: 12px/1.6 "MerriweatherEmbed",Georgia,serif;
-    
 }
 
 .quantity {
@@ -482,3 +478,91 @@ main {
 .sell, .buy {
     color: #c1e22c;
 }
+
+.text-danger {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+ .pagination-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+.pagination {
+        display: inline-flex;
+        justify-content: center;
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+.page-item {
+        margin: 0 4px;
+    }
+
+.page-link {
+        padding: 10px 18px;
+        color: #007bff;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        display: inline-block;
+    }
+
+    /* Hover effect */
+.page-link:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    /* Active page styling */
+.page-item.active .page-link {
+        background-color: #6b6d70;
+        color: #fff;
+        border-color: #007bff;
+        font-weight: bold;
+    }
+
+    /* Disabled page button */
+.page-item.disabled .page-link {
+        color: #aaa;
+        background-color: #f8f9fa;
+        border-color: #ddd;
+        cursor: not-allowed;
+    }
+
+.page-item.disabled .page-link:hover {
+        background-color: #f8f9fa;
+        color: #aaa;
+    }
+
+    /* Previous and Next buttons style */
+.page-item .page-link {
+        border-radius: 50%;
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+
+.page-item .page-link:hover {
+        border-color: #007bff;
+        background-color: #52914c;
+    }
+
+.page-item .page-link {
+        border-radius: 50%;
+    }
+
+.page-link:focus {
+        box-shadow: none;
+    }
+
+
+.text-truncate {
+    max-width: 332px;
+}
+

@@ -1,0 +1,41 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+        <div class="mailbox-container">
+            <h2>Reply to Message</h2>
+
+            <!-- Reply Form -->
+            <form method="post">
+                {% csrf_token %}
+                <!-- Original Message Details -->
+                <div class="sender-info mb-4">
+                    <div class="d-flex justify-content-between">
+                        <!-- Left Column: From and To -->
+                        <div class="info-group">
+                           {% if parent_message.sender == request.user.profile %}
+                                <div><strong>From:</strong> {{ parent_message.sender }}</div>
+                                <div><strong>To:</strong> {{ parent_message.recipient }}</div>
+                            {% else %}
+                                <div><strong>From:</strong> {{ parent_message.recipient }}</div>
+                                <div><strong>To:</strong> {{ parent_message.sender}}</div>
+                            {% endif %}
+                        </div>
+                        <!-- Right Column: Title and Date -->
+                        <div class="info-group">
+                            <div><strong>Title:</strong> {{ form.title.value }}</div>
+                            <div><strong>Date:</strong> {{ parent_message.timestamp|date:"d F, Y H:i" }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Reply:</label>
+                    {{ form.body }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Send Reply</button>
+            </form>
+        </div>
+    </main>
+{% endblock %}

@@ -2,47 +2,79 @@
 {% load static %}
 
 {% block content %}
-
     <main class="container my-5">
-        <h2>Registration - Join Agro Marketplace</h2>
-        <form action="/submit-registration" method="POST" class="row g-3">
-    
-            <!-- User Type Selection -->
+        <h2>Join - Agro Marketplace</h2>
+        <form method="POST" action="{% url 'profile-registration' %}" enctype="multipart/form-data"
+              class="row g-4 justify-content-center">
+            {% csrf_token %}
+            <!-- Profile Photo Upload -->
             <div class="col-md-6">
-                <label for="userType" class="form-label">User Type</label>
-                <select id="userType" name="userType" class="form-select" required>
-                    <option value="buyer">Buyer</option>
-                    <option value="seller">Seller</option>
-                </select>
+                {{ form.profile_photo.errors }}
+                <div class="col-md-4">
+                    <div class="profile-photo-container">
+                        <img
+                                id="profile-img-preview"
+                                src="
+                                        {% if form.profile_photo.value %}{{ form.profile_photo.value.url }}{% else %}{% static 'images/profile_picture.webp' %}{% endif %}"
+                                alt="Profile Preview"
+                                class="img-thumbnail rounded-circle profile-photo-preview">
+                    </div>
+                </div>
+
+                <div class="col-md-8 btn-profile">
+                    <!-- Upload Button -->
+                    <div class="mt-2">
+                        <button
+                                type="button"
+                                class="btn btn-primary"
+                                onclick="document.getElementById('id_profile_photo').click();">
+                            Upload Photo
+                        </button>
+                    </div>
+                    <div class="d-none">
+                        {{ form.profile_photo }}
+                    </div>
+                </div>
             </div>
-        
-            <!-- User Name -->
+
+            <div class="col-md-6 mt-5">
+                {{ form.full_name.label_tag }}
+                {{ form.full_name }}
+                {{ form.full_name.errors }}
+            </div>
             <div class="col-md-6">
-                <label for="userName" class="form-label">User Name</label>
-                <input type="text" id="userName" name="userName" class="form-control" placeholder="John Doe" required>
+                {{ form.username_in_marketplace.label_tag }}
+                {{ form.username_in_marketplace }}
+                {{ form.username_in_marketplace.errors }}
             </div>
-        
-            <!-- Email -->
             <div class="col-md-6">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="example@example.com" required>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
             </div>
-        
-            <!-- Password -->
+            <!-- Description -->
+            <div class="col-md-12">
+                {{ form.description.label_tag }}
+                {{ form.description }}
+                {{ form.description.errors }}
+            </div>
+            <div class="col-md-2">
+                {{ form.country_code.label_tag }}
+                {{ form.country_code }}
+                {{ form.country_code.errors }}
+            </div>
+            <div class="col-md-4">
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+                {{ form.phone.errors }}
+            </div>
             <div class="col-md-6">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" required>
+                {{ form.town.label_tag }}
+                {{ form.town }}
+                {{ form.town.errors }}
             </div>
-        
-            <!-- Confirm Password -->
-            <div class="col-md-6">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
-            </div>
-        
-            <!-- Register Button as Link -->
             <div class="col-12 text-center mt-3">
-                <a href="#" class="btn btn-primary">Register</a>
+                <button type="submit" class="btn btn-primary">Register</button>
             </div>
         </form>
     </main>
