@@ -11,12 +11,14 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView, UpdateView, View
 
 from .forms import AppUserCreationForm, ProfileCreateForm, CustomAuthenticationForm, ProfileEditForm
-from .helper import get_item_by_stringify, get_combined_items
+from .helper import get_combined_items, get_item_by_slug
 from .models import Profile
 from django.utils.timezone import now
+import pytz
 
 UserModel = get_user_model()
-current_time = now()
+sofia_tz = pytz.timezone('Europe/Sofia')
+current_time = now().astimezone(sofia_tz)
 
 
 class AppUserLoginView(LoginView):
@@ -71,7 +73,6 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('dash')
 
     def get_object(self, queryset=None):
-        # Ensure only the logged-in user's profile is edited
         return Profile.objects.get(user=self.request.user)
 
     def form_valid(self, form):
@@ -130,9 +131,8 @@ class ProfileDeleteView(LoginRequiredMixin, View):
         return redirect(reverse_lazy('home'))
 
 
-def delete_item(request, stringify):
-
-    item = get_item_by_stringify(stringify)
+def delete_item(request, slug):
+    item = get_item_by_slug(slug)
     if not item:
         raise Http404("Item not found.")
 
@@ -173,8 +173,8 @@ def inactive_listings(request, pk):
     })
 
 
-def activate_item(request, stringify):
-    item = get_item_by_stringify(stringify, expiration_check='inactive')
+def activate_item(request, slug):
+    item = get_item_by_slug(slug, expiration_check='inactive')
     if not item:
         raise Http404("Item not found, expired, or does not belong to the user.")
 

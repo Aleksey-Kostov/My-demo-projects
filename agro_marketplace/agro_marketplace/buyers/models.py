@@ -4,7 +4,7 @@ from django.db import models
 from agro_marketplace.accounts.models import Profile
 from agro_marketplace.choises import Currency, UnitOfMeasure, PriceTypeChoices, Category
 from agro_marketplace.validators import FileSizeValidator
-from django.utils import timezone
+from django.utils.text import slugify
 
 
 class BuyerItems(models.Model):
@@ -16,6 +16,13 @@ class BuyerItems(models.Model):
     title = models.CharField(
         max_length=255
     )
+
+    slug = models.SlugField(
+        max_length=300,
+        unique=True,
+        blank=True
+    )
+
     category = models.CharField(
         max_length=20,
         choices=Category.choices
@@ -93,15 +100,12 @@ class BuyerItems(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if not self.created_at:
-            self.created_at = timezone.now()
+        if not self.pk:
+            super().save(*args, **kwargs)
+
+        if not self.slug:
+            differentiator = "buyer"
+            self.slug = slugify(f"{differentiator}-{self.pk}-{self.title}")
+
         self.expiration_date = self.created_at + timedelta(days=30)
-
         super().save(*args, **kwargs)
-
-    def stringify(self):
-        # Return a string formatted as pk_title
-        return f"{self.pk}_{self.title.replace(' ', '_').lower()}"
-
-    def __str__(self):
-        return self.stringify()

@@ -8,12 +8,12 @@ from agro_marketplace.sellers.models import SellerItems
 current_time = now()
 
 
-def get_item_by_stringify(stringify, expiration_check=None):
+def get_item_by_slug(slug, expiration_check=None):
     """
-    Fetch an item from BuyerItems or SellerItems using `stringify`.
+    Fetch an item from BuyerItems or SellerItems using `slug`.
 
     Args:
-        stringify (str): The `stringify` format (e.g., `1_amoniak_za_bita`).
+        slug (str): The slug field of the item.
         expiration_check (str): Whether to filter based on expiration status.
                                 Accepts 'active' or 'inactive'.
 
@@ -21,25 +21,17 @@ def get_item_by_stringify(stringify, expiration_check=None):
         object: The matched item from BuyerItems or SellerItems.
     """
     try:
-        parts = stringify.split('_', 1)
-        if len(parts) < 2:
-            raise ValueError("Invalid stringify format")
-
-        pk_str, title_str = parts
-        pk = int(pk_str)
-        title = title_str.replace('_', ' ')
-
-        filters = {'pk': pk, 'title__icontains': title}
+        filters = {'slug': slug}
         if expiration_check == 'active':
             filters['expiration_date__gte'] = current_time
         elif expiration_check == 'inactive':
             filters['expiration_date__lt'] = current_time
 
         return (
-                BuyerItems.objects.filter(**filters).first() or
-                SellerItems.objects.filter(**filters).first()
+            BuyerItems.objects.filter(**filters).first() or
+            SellerItems.objects.filter(**filters).first()
         )
-    except (ValueError, ObjectDoesNotExist):
+    except ObjectDoesNotExist:
         return None
 
 

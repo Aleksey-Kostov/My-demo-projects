@@ -15,7 +15,7 @@ urlpatterns = [
         path('active/', views.activ_listings, name='active-listings'),
         path('inactive/', views.inactive_listings, name='inactive-listings'),
     ])),
-    path('<str:stringify>/', include([
+    path('<slug:slug>/', include([
         path('activate/', views.activate_item, name='activate-item'),
         path('delete-item/', views.delete_item, name='delete-item'),
     ]))

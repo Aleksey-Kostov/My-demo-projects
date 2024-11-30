@@ -6,12 +6,17 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now
 from django.utils import timezone
 from .forms import MessageForm
 from .models import Message, MessageStatus
 from ..accounts.models import AppUser
 from ..buyers.models import BuyerItems
 from ..sellers.models import SellerItems
+
+
+sofia_tz = pytz.timezone('Europe/Sofia')
+current_time = now().astimezone(sofia_tz)
 
 
 def send_message(request, pk=None):
