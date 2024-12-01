@@ -1,22 +1,13 @@
-from datetime import datetime
-
-import pytz
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.utils.timezone import now
-from django.utils import timezone
 from .forms import MessageForm
 from .models import Message, MessageStatus
 from ..accounts.models import AppUser
 from ..buyers.models import BuyerItems
 from ..sellers.models import SellerItems
-
-
-sofia_tz = pytz.timezone('Europe/Sofia')
-current_time = now().astimezone(sofia_tz)
 
 
 def send_message(request, pk=None):
@@ -42,6 +33,7 @@ def send_message(request, pk=None):
             message.recipient = recipient
             message.save()
             MessageStatus.objects.create(message=message, profile=recipient)
+            MessageStatus.objects.create(message=message, profile=request.user, is_read=True)
             return redirect('message-inbox')
     else:
         form = MessageForm()
@@ -54,7 +46,7 @@ def read_message(request, pk):
     message = get_object_or_404(Message, pk=pk)
     current_user = request.user
     read_status, created = MessageStatus.objects.get_or_create(
-        message=message, profile=current_user
+        message=message, profile=current_user, is_read=False
     )
     read_status.mark_as_read()
     return render(request, 'messages/message-read.html', {'message': message})
@@ -88,10 +80,8 @@ def reply_message(request, pk):
 
             return redirect('message-inbox')
         else:
-            print("Form errors:", form.errors)  # Debugging output
+            print("Form errors:", form.errors)
     else:
-        # Prepopulate the form fields with the parent message details
-        # Check if "Re:" is already in the title before adding it
         title = parent_message.title if parent_message.title and parent_message.title.startswith(
             "Re:") else f"Re: {parent_message.title}"
 

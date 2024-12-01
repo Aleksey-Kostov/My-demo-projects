@@ -86,7 +86,7 @@
                                 <div class="message-meta">
                                     <div><strong>From:</strong> {{ message.sender.username }}</div>
                                     <div><strong>To:</strong> {{ message.recipient.username }}</div>
-                                    <div><strong>Date:</strong> {{ message.timestamp|date:"(d F, Y) H:i" }}</div>
+                                    <div><strong>Date:</strong> {{ message.timestamp|date:"d F, Y H:i" }}</div>
                                 </div>
                                 <div class="message-excerpt">
                                     {{ message.body|truncatewords:20|default:"(No content available)" }}

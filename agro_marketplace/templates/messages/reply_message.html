@@ -15,11 +15,11 @@
                         <!-- Left Column: From and To -->
                         <div class="info-group">
                            {% if parent_message.sender == request.user.profile %}
-                                <div><strong>From:</strong> {{ parent_message.sender }}</div>
-                                <div><strong>To:</strong> {{ parent_message.recipient }}</div>
-                            {% else %}
                                 <div><strong>From:</strong> {{ parent_message.recipient }}</div>
-                                <div><strong>To:</strong> {{ parent_message.sender}}</div>
+                                <div><strong>To:</strong> {{ parent_message.sender }}</div>
+                            {% else %}
+                                <div><strong>From:</strong> {{ parent_message.sender }}</div>
+                                <div><strong>To:</strong> {{ parent_message.recipient}}</div>
                             {% endif %}
                         </div>
                         <!-- Right Column: Title and Date -->
