@@ -14,12 +14,12 @@
                     <div class="d-flex justify-content-between">
                         <!-- Left Column: From and To -->
                         <div class="info-group">
-                           {% if parent_message.sender == request.user.profile %}
-                                <div><strong>From:</strong> {{ parent_message.recipient }}</div>
-                                <div><strong>To:</strong> {{ parent_message.sender }}</div>
+                          
+                                <div><strong>From:</strong> {{ request.user.username }}</div>
+                             {% if parent_message.sender == request.user.username %}
+                                <div><strong>To:</strong> {{ parent_message.recipient }}</div>
                             {% else %}
-                                <div><strong>From:</strong> {{ parent_message.sender }}</div>
-                                <div><strong>To:</strong> {{ parent_message.recipient}}</div>
+                                <div><strong>To:</strong> {{ parent_message.sender}}</div>
                             {% endif %}
                         </div>
                         <!-- Right Column: Title and Date -->

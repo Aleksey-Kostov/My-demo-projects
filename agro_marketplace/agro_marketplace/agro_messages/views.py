@@ -77,6 +77,7 @@ def reply_message(request, pk):
             reply.save()
 
             MessageStatus.objects.create(message=reply, profile=reply.recipient)
+            MessageStatus.objects.create(message=reply, profile=request.user, is_read=True)
 
             return redirect('message-inbox')
         else:
