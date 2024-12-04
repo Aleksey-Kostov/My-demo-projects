@@ -14,18 +14,13 @@
                     <div class="d-flex justify-content-between">
                         <!-- Left Column: From and To -->
                         <div class="info-group">
-                          
-                                <div><strong>From:</strong> {{ request.user.username }}</div>
-                             {% if parent_message.sender == request.user.username %}
-                                <div><strong>To:</strong> {{ parent_message.recipient }}</div>
-                            {% else %}
-                                <div><strong>To:</strong> {{ parent_message.sender}}</div>
-                            {% endif %}
+                            <div><strong>From:</strong> {{ sender }}</div>
+                            <div><strong>To:</strong> {{ recipient }}</div>
                         </div>
                         <!-- Right Column: Title and Date -->
                         <div class="info-group">
-                            <div><strong>Title:</strong> {{ form.title.value }}</div>
-                            <div><strong>Date:</strong> {{ parent_message.timestamp|date:"d F, Y H:i" }}</div>
+                            <div><strong>Title:</strong> {{ parent_message.title }}</div>
+                            <div><strong>Date:</strong> {{ current_time|date:"d F, Y H:i" }}</div>
                         </div>
                     </div>
                 </div>
@@ -34,6 +29,9 @@
                     <label for="message">Reply:</label>
                     {{ form.body }}
                 </div>
+                 <a href="{% url 'message-inbox' %}" class="btn btn-secondary mt-3">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
                 <button type="submit" class="btn btn-primary mt-3">Send Reply</button>
             </form>
         </div>

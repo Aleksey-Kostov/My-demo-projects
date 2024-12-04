@@ -423,5 +423,18 @@
 }
 
 .sender-info strong {
-    color: #333; /* Emphasizes labels */
+    color: #333;
+}
+
+.replay-button {
+    background-color: #28a745;
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+    color: white;
+}
+
+.replay-button:hover {
+    background-color: #1f6b44;
+    color: #aaaaaa;
 }

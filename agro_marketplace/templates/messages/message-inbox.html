@@ -89,7 +89,7 @@
                                     <div><strong>Date:</strong> {{ message.timestamp|date:"d F, Y H:i" }}</div>
                                 </div>
                                 <div class="message-excerpt">
-                                    {{ message.body|truncatewords:20|default:"(No content available)" }}
+                                    {{ message.body|safe|linebreaksbr|truncatewords:20|default:"(No content available)" }}
                                 </div>
                                 <div class="custom-button d-flex">
                                     <a href="{% url 'reply-message' message.pk %}" class="custom-button reply">

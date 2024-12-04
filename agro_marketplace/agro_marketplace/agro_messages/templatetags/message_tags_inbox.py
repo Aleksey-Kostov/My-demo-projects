@@ -24,15 +24,15 @@ def message_counts(user):
     ).distinct().count()
 
     sent_count = Message.objects.filter(
-        sender=user
-    ).exclude(
-        statuses__profile=user, statuses__is_deleted=True
+        sender=user,
+        statuses__profile=user,
+        statuses__is_deleted=False
     ).distinct().count()
 
     all_count = Message.objects.filter(
-        Q(sender=user) | Q(recipient=user)
-    ).exclude(
-        statuses__profile=user, statuses__is_deleted=True
+        Q(sender=user) | Q(recipient=user),
+        statuses__profile=user,
+        statuses__is_deleted=False
     ).distinct().count()
 
     return {
