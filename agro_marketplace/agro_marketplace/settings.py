@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'agro_marketplace.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "agro_marketplace",
+        "NAME": "agro_marketplace2",
         "USER": "postgres-user",
         "PASSWORD": config('DATABASE_PASSWORD'),
         "HOST": "127.0.0.1",

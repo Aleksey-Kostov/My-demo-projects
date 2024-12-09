@@ -72,12 +72,17 @@
                                     {% endif %}
                                 </div>
                                 <div class="btn-group" role="group">
-                                    <a href="{% url 'card_info_sell' object.pk %}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{% url 'card_info_sell' object.pk %}" class="btn btn-outline-primary btn-sm activate">
                                         <i class="fas fa-info-circle"></i>
+                                        <span class="tooltip-text">Info</span>
                                     </a>
-                                    <a href="{% url 'send-message' object.profile.pk %}" class="btn btn-outline-success btn-sm">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
+                                    {% if user != object.profile.user %}
+                                        <a href="{% url 'send-message' object.profile.pk %}"
+                                           class="btn btn-outline-success btn-sm activate">
+                                            <i class="fas fa-envelope"></i>
+                                            <span class="tooltip-text">Send Message</span>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="feed-card d-flex align-items-center p-2">
@@ -223,12 +228,17 @@
                                     {% endif %}
                                 </div>
                                 <div class="btn-group" role="group">
-                                    <a href="{% url 'card-info-buy' object.pk %}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{% url 'card-info-buy' object.pk %}" class="btn btn-outline-primary btn-sm activate">
                                         <i class="fas fa-info-circle"></i>
+                                        <span class="tooltip-text">Info</span>
                                     </a>
-                                    <a href="{% url 'send-message' object.profile.pk %}" class="btn btn-outline-success btn-sm">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
+                                    {% if user != object.profile.user %}
+                                        <a href="{% url 'send-message' object.profile.pk %}"
+                                           class="btn btn-outline-success btn-sm activate">
+                                            <i class="fas fa-envelope"></i>
+                                            <span class="tooltip-text">Send Message</span>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="feed-card d-flex align-items-center justify-content-between p-2">

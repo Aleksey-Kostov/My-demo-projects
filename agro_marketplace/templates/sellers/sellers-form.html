@@ -8,46 +8,59 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <h2 class="text-center mb-4">Sell in Agro Marketplace</h2>
-                   <form action="{% url 'create_seller' %}" method="POST" class="p-4 border rounded"
+                    <form action="{% url 'create_seller' %}" method="POST" class="p-4 border rounded"
                           enctype="multipart/form-data">
                         {% csrf_token %}
                         <!-- Title Field -->
                         <div class="mb-3">
-                            <div class="text-danger">
-                                {{ seller_form.title.errors }}
-                            </div>
                             {{ seller_form.title.label_tag }}
                             {{ seller_form.title }}
+                            {% if seller_form.title.errors %}
+                                <div class="alert alert-danger">
+                                    {{ seller_form.title.errors }}
+                                </div>
+                            {% endif %}
                         </div>
-                        <!-- Category Field -->
+                       
                         <div class="mb-3">
-                            <div class="text-danger">
-                                {{ seller_form.category.errors }}
-                            </div>
                             {{ seller_form.category.label_tag }}
                             {{ seller_form.category }}
+                            {% if seller_form.category.errors %}
+                                <div class="alert alert-danger">
+                                    {{ seller_form.category.errors }}
+                                </div>
+                            {% endif %}
                         </div>
                         <!-- Location Field with Icon -->
-                        <div class="text-danger">
-                            {{ seller_form.location.errors }}
-                        </div>
                         {{ seller_form.location.label_tag }}
                         <div class="mb-3 d-flex align-items-center">
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                                 {{ seller_form.location }}
+                                {% if seller_form.location.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ seller_form.location.errors }}
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                         <!-- Description Field -->
                         <div class="mb-3">
-                            <div class="text-danger">
-                                {{ seller_form.description.errors }}
-                            </div>
                             {{ seller_form.description.label_tag }}
                             {{ seller_form.description }}
+                            {% if seller_form.description.errors %}
+                                <div class="alert alert-danger">
+                                    {{ seller_form.description.errors }}
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="photo-framework">
-                            <label for="id_photo_1"><div class="text-danger">{{ seller_form.photo_1.errors }}</div>
+                            <label for="id_photo_1">
+                                {% if seller_form.photo_1.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ seller_form.photo_1.errors }}
+                                    </div>
+                                {% endif %}
                                 {{ seller_form.photo_1.label_tag }}</label>
                             <div class="photo-container">
                                 <img
@@ -68,7 +81,12 @@
                         </div>
 
                         <div class="photo-framework">
-                            <label for="id_photo_2"><div class="text-danger">{{ seller_form.photo_2.errors }}</div>
+                            <label for="id_photo_2">
+                                {% if seller_form.photo_2.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ seller_form.photo_2.errors }}
+                                    </div>
+                                {% endif %}
                                 {{ seller_form.photo_2.label_tag }}</label>
                             <div class="photo-container">
                                 <img
@@ -89,7 +107,12 @@
                         </div>
 
                         <div class="photo-framework">
-                            <label for="id_photo_3"><div class="text-danger">{{ seller_form.photo_3.errors }}</div>
+                            <label for="id_photo_3">
+                                {% if seller_form.photo_3.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ seller_form.photo_3.errors }}
+                                    </div>
+                                {% endif %}
                                 {{ seller_form.photo_3.label_tag }}</label>
                             <div class="photo-container">
                                 <img
@@ -109,7 +132,12 @@
                             </div>
                         </div>
                         <div class="photo-framework">
-                            <label for="id_photo_4"><div class="text-danger">{{ seller_form.photo_4.errors }}</div>
+                            <label for="id_photo_4">
+                                {% if seller_form.photo_4.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ seller_form.photo_4.errors }}
+                                    </div>
+                                {% endif %}
                                 {{ seller_form.photo_4.label_tag }}</label>
                             <div class="photo-container">
                                 <img id="photoPreview4" src="{% static 'images/default products2.jpg' %}" alt="Photo 4"
@@ -124,52 +152,72 @@
 
                         <!-- Phone for Contacts -->
                         <div class="mb-3">
-                            <div class="text-danger">
-                                {{ seller_form.phone.errors }}
-                            </div>
                             {{ seller_form.phone.label_tag }}
                             {{ seller_form.phone }}
+                            {% if seller_form.phone.errors %}
+                                <div class="alert alert-danger">
+                                    {{ seller_form.phone.errors }}
+                                </div>
+                            {% endif %}
                         </div>
-
-                        <!-- Quantity Field -->
-                        <div class="mb-3" class="form-group">
-                            <div class="text-danger">
-                                {{ seller_form.quantity.errors }}
-                            </div>
-                            {{ seller_form.quantity.label_tag }}
-                            <div class="d-flex">
+                        <div class="d-flex">
+                            <div class="col-md-6">
+                                {{ seller_form.quantity.label_tag }}
                                 {{ seller_form.quantity }}
+                                {% if seller_form.quantity.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ seller_form.quantity.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {{ seller_form.unit_of_measure.label_tag }}
                                 {{ seller_form.unit_of_measure }}
                             </div>
                         </div>
-
                         <div class="mb-3">
-                            <div class="text-danger">
-                                {{ seller_form.price_type.errors }}
-                            </div>
                             {{ seller_form.price_type.label_tag }}
                             {{ seller_form.price_type }}
+                            {% if seller_form.price_type.errors %}
+                                <div class="alert alert-danger">
+                                    {{ seller_form.price_type.errors }}
+                                </div>
+                            {% endif %}
                         </div>
 
                         <div id="pricePerUnitContainer" class="form-group" style="display: none;">
-                            <div class="text-danger">
-                                {{ seller_form.price_per_unit.errors }}
-                            </div>
-                            {{ seller_form.price_per_unit.label_tag }}
                             <div class="d-flex">
-                                {{ seller_form.price_per_unit }}
-                                {{ seller_form.currency }}
+                                <div class="col-md-6">
+                                    {{ seller_form.price_per_unit.label_tag }}
+                                    {{ seller_form.price_per_unit }}
+                                    {% if seller_form.price_per_unit.errors %}
+                                        <div class="alert alert-danger">
+                                            {{ seller_form.price_per_unit.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ seller_form.currency.label_tag }}
+                                    {{ seller_form.currency }}
+                                </div>
                             </div>
                         </div>
 
                         <div id="priceAllQuantityContainer" class="form-group" style="display: none;">
-                            <div class="text-danger">
-                                {{ seller_form.price_all_quantity.errors }}
-                            </div>
-                            {{ product_form.price_all_quantity.label_tag }}
                             <div class="d-flex">
-                                {{ seller_form.price_all_quantity }}
-                                {{ seller_form.currency }}
+                                <div class="col-md-6">
+                                    {{ seller_form.price_all_quantity.label_tag }}
+                                    {{ seller_form.price_all_quantity }}
+                                    {% if seller_form.price_all_quantity.errors %}
+                                        <div class="alert alert-danger">
+                                            {{ seller_form.price_all_quantity.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ seller_form.currency.label_tag }}
+                                    {{ seller_form.currency }}
+                                </div>
                             </div>
                         </div>
                         <!-- Submit Button -->

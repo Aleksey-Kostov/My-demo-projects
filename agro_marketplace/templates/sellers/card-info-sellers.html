@@ -88,7 +88,7 @@
                     <!-- Name (Non-editable) -->
                     <div class="mb-3">
                         <strong>Name:</strong>
-                        <p class="mb-1">{{ item.profile.full_name }}</p>
+                        <p class="mb-1">{{ item.profile.username_in_marketplace }}</p>
                     </div>
 
                     <!-- Quantity -->
@@ -124,10 +124,12 @@
                     </div>
 
                     <!-- Send Message Button -->
-                    <div class="text-center">
+                    {% if user != item.profile.user %}
+                        <div class="text-center">
                         <a href="{% url 'send-message' item.profile.pk %}" class="btn btn-success">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </a>
+                    {% endif %}
                     </div>
                 </div>
             </div>

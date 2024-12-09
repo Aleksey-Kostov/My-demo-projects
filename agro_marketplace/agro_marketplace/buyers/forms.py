@@ -63,8 +63,6 @@ class BuyersForm(forms.ModelForm):
     def clean_price_per_unit(self):
         price_type = self.cleaned_data.get('price_type')
         price_per_unit = self.cleaned_data.get('price_per_unit')
-
-        # If the price_type is 'per_quantity', price_per_unit must be provided
         if price_type == 'per_quantity' and not price_per_unit:
             raise forms.ValidationError("Price per unit is required when price type is 'per_quantity'.")
 
@@ -73,20 +71,37 @@ class BuyersForm(forms.ModelForm):
     def clean_price_all_quantity(self):
         price_type = self.cleaned_data.get('price_type')
         price_all_quantity = self.cleaned_data.get('price_all_quantity')
-
-        # If the price_type is 'all_quantity', price_all_quantity must be provided
         if price_type == 'all_quantity' and not price_all_quantity:
             raise forms.ValidationError("Total price for all quantity is required when price type is 'all_quantity'.")
 
         return price_all_quantity
 
-    def clean(self):
-        cleaned_data = super().clean()
-        price_type = cleaned_data.get('price_type')
-        price_per_unit = cleaned_data.get('price_per_unit')
-        price_all_quantity = cleaned_data.get('price_all_quantity')
+    def clean_description(self):
+        description = self.cleaned_data.get('description', '').strip()
+        if len(description) < 50:
+            raise forms.ValidationError("The description for Buyer must be at least 50 characters long.")
+        return description
 
-        if price_type == 'negotiation' and (price_per_unit or price_all_quantity):
-            raise forms.ValidationError("Price fields should be empty if the price type is 'negotiation'.")
+    def clean_quantity(self):
+        quantity = self.cleaned_data.get('quantity')
+        if quantity is None or quantity <= 0:
+            raise forms.ValidationError("Buy Quantity must be greater than zero.")
+        return quantity
 
-        return cleaned_data
+    def clean_title(self):
+        title = self.cleaned_data.get('title', '').strip()
+        if not title:
+            raise forms.ValidationError("The Product Title field cannot be empty.")
+        return title
+
+    def clean_category(self):
+        category = self.cleaned_data.get('category', '').strip()
+        if not category:
+            raise forms.ValidationError("The Product Category field cannot be empty.")
+        return category
+
+    def clean_location(self):
+        location = self.cleaned_data.get('location', '').strip()
+        if not location:
+            raise forms.ValidationError("The Location field cannot be empty.")
+        return location

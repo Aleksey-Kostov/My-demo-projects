@@ -84,8 +84,8 @@
                             <a href="{% url 'read-message' message.pk %}" class="message-content text-decoration-none">
                                 <div class="message-title">{{ message.title }}</div>
                                 <div class="message-meta">
-                                    <div><strong>From:</strong> {{ message.sender.username }}</div>
-                                    <div><strong>To:</strong> {{ message.recipient.username }}</div>
+                                    <div><strong>From:</strong> {{ message.sender.profile.username_in_marketplace }}</div>
+                                    <div><strong>To:</strong> {{ message.recipient.profile.username_in_marketplace }}</div>
                                     <div><strong>Date:</strong> {{ message.timestamp|date:"d F, Y H:i" }}</div>
                                 </div>
                                 <div class="message-excerpt">

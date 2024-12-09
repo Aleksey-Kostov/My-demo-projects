@@ -5,24 +5,17 @@
     <main class="container my-4">
         <section class="edit-profile">
             <h2>Edit Profile</h2>
-
-            <!-- Display Success or Error Messages -->
-            {% if messages %}
-                <div class="alert-container">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
             <form action="{% url 'profile-edit' request.user.pk %}" method="POST" enctype="multipart/form-data"
                   class="row g-3">
                 {% csrf_token %}
 
                 <!-- Profile Photo -->
                 <div class="col-md-12 mb-3 text-center">
+                    {% if form.profile_photo.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.profile_photo.errors }}
+                        </div>
+                    {% endif %}
                     <div class="profile-photo-container">
                         <img src="
                                 
@@ -41,9 +34,7 @@
                     {{ form.full_name }}
                     {% if form.full_name.errors %}
                         <div class="alert alert-danger">
-                            {% for error in form.full_name.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
+                            {{ form.full_name.errors }}
                         </div>
                     {% endif %}
                 </div>
@@ -54,9 +45,7 @@
                     {{ form.username_in_marketplace }}
                     {% if form.username_in_marketplace.errors %}
                         <div class="alert alert-danger">
-                            {% for error in form.username_in_marketplace.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
+                            {{ form.username_in_marketplace.errors }}
                         </div>
                     {% endif %}
                 </div>
@@ -67,40 +56,35 @@
                     {{ form.email }}
                     {% if form.email.errors %}
                         <div class="alert alert-danger">
-                            {% for error in form.email.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
+                            {{ form.email.errors }}
                         </div>
                     {% endif %}
                 </div>
 
                 <!-- Country Code and Phone -->
-                <div class="col-md-6 mb-3">
-                    <div class="d-flex">
-                        <div class="col-md-4">
-                            {{ form.country_code.label_tag }}
-                            {{ form.country_code }}
-                            {% if form.country_code.errors %}
-                                <div class="alert alert-danger">
-                                    {% for error in form.country_code.errors %}
-                                        <p>{{ error }}</p>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+
+
+                <div class="col-md-2">
+                    {{ form.country_code.label_tag }}
+                    {{ form.country_code }}
+                    {% if form.country_code.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.country_code.errors }}
                         </div>
-                        <div class="col-md-8">
-                            {{ form.phone.label_tag }}
-                            {{ form.phone }}
-                            {% if form.phone.errors %}
-                                <div class="alert alert-danger">
-                                    {% for error in form.phone.errors %}
-                                        <p>{{ error }}</p>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
+                    {% endif %}
                 </div>
+
+                <div class="col-md-4">
+                    {{ form.phone.label_tag }}
+                    {{ form.phone }}
+                    {% if form.phone.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.phone.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                       
+                
 
                 <!-- Town -->
                 <div class="col-md-6 mb-3">
@@ -108,9 +92,16 @@
                     {{ form.town }}
                     {% if form.town.errors %}
                         <div class="alert alert-danger">
-                            {% for error in form.town.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
+                            {{ form.town.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                 <div class="col-md-6 mb-3">
+                    {{ form.description.label_tag }}
+                    {{ form.description }}
+                     {% if form.description.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.description.errors }}
                         </div>
                     {% endif %}
                 </div>
@@ -120,25 +111,21 @@
                 <!-- New Password -->
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
-                        {{ form.newPassword.label_tag }}
-                        {{ form.newPassword }}
-                        {% if form.newPassword.errors %}
+                        {{ form.new_password.label_tag }}
+                        {{ form.new_password }}
+                        {% if form.new_password.errors %}
                             <div class="alert alert-danger">
-                                {% for error in form.newPassword.errors %}
-                                    <p>{{ error }}</p>
-                                {% endfor %}
+                                {{ form.new_password.errors }}
                             </div>
                         {% endif %}
                     </div>
 
                     <div class="col-md-6">
-                        {{ form.confirmPassword.label_tag }}
-                        {{ form.confirmPassword }}
-                        {% if form.confirmPassword.errors %}
+                        {{ form.confirm_password.label_tag }}
+                        {{ form.confirm_password }}
+                        {% if form.confirm_password.errors %}
                             <div class="alert alert-danger">
-                                {% for error in form.confirmPassword.errors %}
-                                    <p>{{ error }}</p>
-                                {% endfor %}
+                                {{ form.confirm_password.errors }}
                             </div>
                         {% endif %}
                     </div>

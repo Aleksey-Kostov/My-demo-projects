@@ -10,18 +10,6 @@ function updateMessageCounts() {
     document.getElementById('allCount').setAttribute('data-count', totalMessages);
 }
 
-// Function to filter messages by status
-function filterMessages(status) {
-    const messageCards = document.querySelectorAll('.message-card');
-    messageCards.forEach(card => {
-        const cardStatus = card.getAttribute('data-status');
-        if (status === 'all' || cardStatus === status) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
 
 // Function to delete a message
 function deleteMessage(button) {
@@ -32,5 +20,4 @@ function deleteMessage(button) {
     }
 }
 
-// Update message counts when the page is loaded
 document.addEventListener('DOMContentLoaded', updateMessageCounts);

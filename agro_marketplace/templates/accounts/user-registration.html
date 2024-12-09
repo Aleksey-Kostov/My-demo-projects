@@ -14,28 +14,44 @@
                     <div class="mb-3">
                         {{ form.username.label_tag }}
                         {{ form.username }}
-                        {{ form.username.errors }}
+                        {% if form.username.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
                     </div>
 
                     <!-- Email Field -->
                     <div class="mb-3">
                         {{ form.email.label_tag }}
                         {{ form.email }}
-                        {{ form.email.errors }}
+                        {% if form.email.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
                     </div>
 
                     <!-- Password Field -->
                     <div class="mb-3">
-                        {{ form.password1.errors }}
                         {{ form.password1.label_tag }}
                         {{ form.password1 }}
+                        {% if form.password1.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.password1.errors }}
+                            </div>
+                        {% endif %}
                     </div>
 
                     <!-- Repeat Password Field -->
                     <div class="mb-3">
-                        {{ form.password2.errors }}
                         {{ form.password2.label_tag }}
                         {{ form.password2 }}
+                        {% if form.password2.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.password2.errors }}
+                            </div>
+                        {% endif %}
                     </div>
 
                     <!-- Submit Button -->

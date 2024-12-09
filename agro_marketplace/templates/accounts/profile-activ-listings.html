@@ -48,16 +48,35 @@
                             </div>
                             <div class="btn-group" role="group">
                                 {% if item.item_type == 'Seller' %}
-                                    <a href="{% url 'card_info_sell' item.pk %}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{% url 'card_info_sell' item.pk %}"
+                                       class="btn btn-outline-primary btn-sm activate">
                                         <i class="fas fa-info-circle"></i>
+                                        <span class="tooltip-text">Info</span>
                                     </a>
                                 {% elif item.item_type == 'Buyer' %}
-                                    <a href="{% url 'card-info-buy' item.pk %}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{% url 'card-info-buy' item.pk %}"
+                                       class="btn btn-outline-primary btn-sm activate">
                                         <i class="fas fa-info-circle"></i>
+                                        <span class="tooltip-text">Info</span>
                                     </a>
                                 {% endif %}
-                                <a href="{% url 'delete-item' item.slug %}" class="btn btn-outline-danger btn-sm">
+                                {% if item.item_type == 'Seller' %}
+                                    <a href="{% url 'edit-seller' item.pk %}"
+                                       class="btn btn-outline-primary btn-sm activate">
+                                        <i class="fas fa-edit"></i>
+                                        <span class="tooltip-text">Edit</span>
+                                    </a>
+                                {% elif item.item_type == 'Buyer' %}
+                                    <a href="{% url 'edit-buyer' item.pk %}"
+                                       class="btn btn-outline-primary btn-sm activate">
+                                        <i class="fas fa-edit"></i>
+                                        <span class="tooltip-text">Edit</span>
+                                    </a>
+                                {% endif %}
+                                <a href="{% url 'delete-item' item.slug %}"
+                                   class="btn btn-outline-danger btn-sm activate">
                                     <i class="fas fa-trash-alt"></i>
+                                    <span class="tooltip-text">Delete</span>
                                 </a>
                             </div>
                             </div>

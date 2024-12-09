@@ -15,8 +15,8 @@
 
                 <!-- Sender Information -->
                 <div class="sender-info">
-                    <span><strong>From:</strong> {{ message.sender.username }}</span>
-                    <span><strong>To:</strong> {{ message.recipient.username }}</span>
+                    <span><strong>From:</strong> {{ message.sender.profile.username_in_marketplace }}</span>
+                    <span><strong>To:</strong> {{ message.recipient.profile.username_in_marketplace }}</span>
                     <span><strong>Date:</strong> {{ message.timestamp|date:"d F, Y H:i" }}</span>
                 </div>
 

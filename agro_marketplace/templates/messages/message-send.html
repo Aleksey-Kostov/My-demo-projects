@@ -11,28 +11,47 @@
                         <h5 class="mb-0">Message Details</h5>
                     </div>
                     <div class="card-body">
-                        <!-- Display Recipient Details -->
-                        <div class="mb-3 d-flex align-items-center">
-                            <span class="me-2"><i class="fas fa-user-circle text-warning"></i></span>
-                            <strong>Sender:</strong>
-                            <span class="ms-2">{{ user.username }}</span>
+                        <div class="row">
+                            <!-- Sender -->
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <span class="me-2">
+                                    <i class="fas fa-user-circle text-warning"></i>
+                                </span>
+                                <div class="d-flex flex-grow-1 justify-content-between">
+                                    <span class="detail-label">
+                                        <strong>Sender:</strong>
+                                    </span>
+                                    <span class="ms-3">{{ user.profile.username_in_marketplace }}</span>
+                                </div>
+                            </div>
+                            <!-- Recipient -->
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <span class="me-2">
+                                    <i class="fas fa-user text-primary"></i>
+                                </span>
+                                <div class="d-flex flex-grow-1 justify-content-between">
+                                    <span class="detail-label">
+                                         <strong>Recipient:</strong>
+                                    </span>
+                                    <span class="ms-3">{{ recipient.profile.username_in_marketplace }}</span>
+                                </div>
+                            </div>
+                            <!-- Product -->
+                            <div class="col-12 d-flex align-items-center mb-3">
+                                <span class="me-2">
+                                    <i class="fas fa-box text-success"></i>
+                                </span>
+                                <div class="d-flex flex-grow-1 justify-content-between">
+                                    <span class="detail-label">
+                                        <strong>Product:</strong>
+                                    </span>
+                                    <span class="ms-3">{{ product.title }}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3 d-flex align-items-center">
-                            <span class="me-2"><i class="fas fa-user text-primary"></i></span>
-                            <strong>Recipient:</strong>
-                            <span class="ms-2">{{ recipient.username }}</span>
-                        </div>
-                        <!-- Display Product Title -->
-                        <div class="mb-3 d-flex align-items-center">
-                            <span class="me-2"><i class="fas fa-box text-success"></i></span>
-                            <strong>Product:</strong>
-                            <span class="ms-2">{{ product.title }}</span>
-                        </div>
-                        <!-- Display Sender Information -->
                     </div>
                 </div>
-
-                <!-- Message Form -->
+                    <!-- Message Form -->
                 <div class="card shadow-sm">
                     <div class="card-header bg-secondary text-white">
                         <h5 class="mb-0">Compose Your Message</h5>

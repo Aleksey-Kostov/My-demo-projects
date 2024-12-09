@@ -94,20 +94,18 @@ class SellerItems(models.Model):
         auto_now_add=True
     )
 
-    # Store the expiration date directly
     expiration_date = models.DateTimeField(
         null=True, blank=True, editable=False
     )
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            super().save(*args, **kwargs)
+            if not self.expiration_date and self.created_at:
+                self.expiration_date = self.created_at + timedelta(days=30)
 
-        if not self.slug:
-            differentiator = "seller"
-            self.slug = slugify(f"{differentiator}-{self.pk}-{self.title}")
-
-        self.expiration_date = self.created_at + timedelta(days=30)
+            if not self.slug:
+                differentiator = "seller"
+                self.slug = slugify(f"{differentiator}-{self.pk}-{self.title}")
         super().save(*args, **kwargs)
 
     def __str__(self):

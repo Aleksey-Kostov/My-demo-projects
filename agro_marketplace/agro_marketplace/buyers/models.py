@@ -94,7 +94,6 @@ class BuyerItems(models.Model):
         auto_now_add=True
     )
 
-    # Store the expiration date directly
     expiration_date = models.DateTimeField(
         null=True, blank=True, editable=False
     )
@@ -109,3 +108,6 @@ class BuyerItems(models.Model):
 
         self.expiration_date = self.created_at + timedelta(days=30)
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title

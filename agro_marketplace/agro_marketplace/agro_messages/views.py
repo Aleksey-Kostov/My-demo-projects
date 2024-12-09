@@ -28,12 +28,11 @@ def send_message(request, pk=None):
             message = form.save(commit=False)
             message.sender = request.user
             message.recipient = recipient
-
             message.body = (
                 f"🛒 **Product Inquiry:** {product}\n"
                 f"📅 **Date:** {now():%d-%m-%Y %H:%M}\n"
-                f"📨 **From:** {message.sender}\n"
-                f"📩 **To:** {message.recipient}\n"
+                f"📨 **From:** {message.sender.profile.username_in_marketplace}\n"
+                f"📩 **To:** {message.recipient.profile.username_in_marketplace}\n"
                 f"─────────────────────────\n"
                 f"💬 **Message Content:**\n"
                 f"{message.body}\n"
@@ -95,7 +94,7 @@ def reply_message(request, pk):
                 else parent_message.title
             reply.parent_message = parent_message
             reply.body = (
-                f"🔄 **Replied to {recipient}**\n"
+                f"🔄 **Replied to** {recipient.profile.username_in_marketplace}\n"
                 f"📅**Date:** {current_time:%d-%m-%Y %H:%M}\n "
                 f"─────────────────────────\n"
                 f"💬 **Message Content:**\n"

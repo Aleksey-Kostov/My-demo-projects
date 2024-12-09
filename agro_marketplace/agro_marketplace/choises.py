@@ -16,7 +16,7 @@ class Category(models.TextChoices):
 class PriceTypeChoices(models.TextChoices):
     NEGOTIATION = 'negotiation', 'Price by Negotiation'
     ALL_QUANTITY = 'all_quantity', 'Price for All Quantity'
-    PER_QUANTITY = 'per_quantity', 'Price per Quantity'
+    PER_QUANTITY = 'per_quantity', 'Price per Unit'
 
 
 class Currency(models.TextChoices):
