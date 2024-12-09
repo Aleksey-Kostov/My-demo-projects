@@ -5,6 +5,7 @@ from agro_marketplace.accounts.models import Profile
 from agro_marketplace.choises import Currency, UnitOfMeasure, PriceTypeChoices, Category
 from agro_marketplace.validators import FileSizeValidator
 from django.utils.text import slugify
+from datetime import datetime
 
 
 class BuyerItems(models.Model):
@@ -100,13 +101,12 @@ class BuyerItems(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            super().save(*args, **kwargs)
+            if not self.expiration_date:
+                self.expiration_date = datetime.now() + timedelta(days=30)
 
-        if not self.slug:
-            differentiator = "buyer"
-            self.slug = slugify(f"{differentiator}-{self.pk}-{self.title}")
-
-        self.expiration_date = self.created_at + timedelta(days=30)
+            if not self.slug:
+                differentiator = "buyer"
+                self.slug = slugify(f"{differentiator}-{self.pk}-{self.title}")
         super().save(*args, **kwargs)
 
     def __str__(self):

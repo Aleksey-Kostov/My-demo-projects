@@ -4,6 +4,7 @@ from agro_marketplace.choises import Currency, UnitOfMeasure, PriceTypeChoices, 
 from agro_marketplace.validators import FileSizeValidator
 from datetime import timedelta
 from django.utils.text import slugify
+from datetime import datetime
 
 
 class SellerItems(models.Model):
@@ -100,8 +101,8 @@ class SellerItems(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            if not self.expiration_date and self.created_at:
-                self.expiration_date = self.created_at + timedelta(days=30)
+            if not self.expiration_date:
+                self.expiration_date = datetime.now() + timedelta(days=30)
 
             if not self.slug:
                 differentiator = "seller"
