@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set working directory to the Django project
-      working-directory: /agro_marketplace  # Adjust the path to your subfolder
+      working-directory: My-demo-projects/agro_marketplace
       run: echo "Working directory set to agro_marketplace"
 
     - name: Set up Python
